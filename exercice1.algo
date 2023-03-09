@@ -1,0 +1,18 @@
+ALGORITHM sum
+TYPE
+Vecteur = ARRAY[1..n] OF REAL;
+VAR
+    tab1:= array[1...n] of real;
+    tab2:= array[1...n] of real;
+    i,j: INTEGER;
+    sum: INTEGER;
+BEGIN
+    for i:=1 to n do
+    for j:=1 to n do
+    if tab1[i]!=tab2[j]
+    sum:=sum+t1[i]
+    i:=i+1
+    end
+    end
+    print(sum)
+END

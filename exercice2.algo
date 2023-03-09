@@ -1,0 +1,96 @@
+TYPE
+  Vecteur = ARRAY[1..n] OF REAL;
+
+PROCEDURE dot_product(V1, V2: Vecteur; VAR ps: REAL);
+VAR
+  i: INTEGER;
+BEGIN
+  ps := 0;
+  FOR i := 1 TO n DO
+    ps := ps + V1[i] * V2[i];
+  END;
+END;
+VAR
+  v1, v2: Vecteur;
+  ps: REAL;
+  i, j: INTEGER;
+
+BEGIN
+  FOR i := 1 TO n DO
+    LIRE(v1[i]);
+  END;
+
+  FOR i := 1 TO n DO
+    LIRE(v2[i]);
+  END;
+  POUR i := 1 À n FAIRE
+    POUR j := 1 À n FAIRE
+      ECRIRE("v1[", i, "] = ", v1[i]);
+      ECRIRE("v2[", j, "] = ", v2[j]);
+    FINPOUR;
+  FINPOUR;
+
+  dot_product(v1, v2, ps);
+
+  ECRIRE(ps);
+END.
+
+ALGORITHME vecteurs_orthogonaux
+VAR
+  n, i: INTEGER;
+  v1, v2: ARRAY[1..n] OF REAL;
+  ps: REAL;
+BEGIN
+  LIRE n;
+  POUR i := 1 TO n FAIRE
+    LIRE v1[i], v2[i];
+    dot_product(v1, v2, ps);
+    SI ps = 0 ALORS
+      ECRIRE "Les vecteurs v1 et v2 sont orthogonaux";
+    SINON
+      ECRIRE "Les vecteurs v1 et v2 ne sont pas orthogonaux";
+    FINSI;
+  FINPOUR;
+FIN.
+
+
+FONCTION dot_product(v1, v2: ARRAY[1..n] OF REAL): REAL
+VAR
+  i: INTEGER;
+  ps: REAL;
+BEGIN
+  ps := 0;
+  POUR i := 1 TO n FAIRE
+    ps := ps + v1[i] * v2[i];
+  FINPOUR;
+  dot_product := ps;
+  
+  FONCTION dot_product(v1, v2: ARRAY[1..n] OF REAL): REAL
+VAR
+  i: INTEGER;
+  ps: REAL;
+BEGIN
+  ps := 0;
+  POUR i := 1 TO n FAIRE
+    ps := ps + v1[i] * v2[i];
+  FINPOUR;
+  dot_product := ps;
+END;
+
+ALGORITHME vecteurs_orthogonaux
+VAR
+  n, i: INTEGER;
+  v1, v2: ARRAY[1..n] OF REAL;
+  ps: REAL;
+BEGIN
+  LIRE n;
+  POUR i := 1 TO n FAIRE
+    LIRE v1[i], v2[i];
+    ps := dot_product(v1, v2);
+    SI ps = 0 ALORS
+      ECRIRE "Les vecteurs v1 et v2 sont orthogonaux";
+    SINON
+      ECRIRE "Les vecteurs v1 et v2 ne sont pas orthogonaux";
+    FINSI;
+  FINPOUR;
+FIN.
